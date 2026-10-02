@@ -1,0 +1,4 @@
+mcp==1.30.0
+PyYAML==6.0.3
+ruamel.yaml==0.18.17
+websockets==15.0.1

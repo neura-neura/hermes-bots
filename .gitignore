@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+auth.json
+config.yaml
+profile.yaml
+*.db
+*.db-*
+*.log
+bot-creator-history/
+bots/*/docs/*results.json
