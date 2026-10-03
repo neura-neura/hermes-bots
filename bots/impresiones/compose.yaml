@@ -1,0 +1,24 @@
+services:
+  bot:
+    build: .
+    image: impresionestg-bot:local
+    container_name: impresionestg-bot
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE: /app/data/pedidos.sqlite3
+      PTB_TIMEDELTA: "1"
+    volumes:
+      - ./data:/app/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"

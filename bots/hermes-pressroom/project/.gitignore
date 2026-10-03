@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+cache/
+logs/
+newspapers/
+temp/
+profiles/
+system/environment.json
+system/printers.json
+system/system.json

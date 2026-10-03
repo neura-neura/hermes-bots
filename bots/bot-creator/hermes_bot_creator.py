@@ -8,7 +8,7 @@ from urllib.error import HTTPError
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
-ROOT = Path.home() / '.hermes'
+ROOT = Path(os.environ.get('HERMES_HOME', Path.home() / '.hermes')).expanduser()
 SOURCE = ROOT / 'hermes-agent'
 STATE = ROOT / 'bot-creator-history'
 FILES = ('config.yaml', 'SOUL.md', 'profile.yaml')

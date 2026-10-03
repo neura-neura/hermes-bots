@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "impresionestg-bot"
+version = "1.0.0"
+description = "Bandeja de producción de impresiones en Telegram"
+requires-python = ">=3.11"
+dependencies = ["python-telegram-bot==22.8"]
+
+[project.optional-dependencies]
+test = ["pytest==8.4.2"]
+
+[project.scripts]
+impresiones = "impresion_bot.cli:main"
+
+[tool.setuptools.package-data]
+impresion_bot = ["schema.sql", "templates.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["impresion_bot*"]

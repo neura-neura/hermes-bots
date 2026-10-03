@@ -1,0 +1,8 @@
+{
+  "impresion": {"tipo":"impresión","papel":"carta / bond","color":"por confirmar","caras":"una","cantidad":"por confirmar"},
+  "escaneo": {"tipo":"escaneo","descripcion":"PDF; resolución y entrega por confirmar"},
+  "engargolado": {"tipo":"engargolado","acabados":"engargolar; pasta y arillo por confirmar"},
+  "corte": {"tipo":"corte","acabados":"cortar; medidas por confirmar"},
+  "copias": {"tipo":"copias","color":"blanco y negro","caras":"una"},
+  "otro": {"tipo":"otro"}
+}
