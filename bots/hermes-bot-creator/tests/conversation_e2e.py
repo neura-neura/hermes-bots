@@ -20,7 +20,7 @@ async def main():
                 if frame.get('id')==rid:
                     if 'error' in frame: raise RuntimeError(frame['error'])
                     return frame['result']
-        session=await rpc('session.create',{'profile':'bot-creator','source':'gui','title':'Bot Creator - prueba E2E temporal','follow_profile_config':True,'close_on_disconnect':True})
+        session=await rpc('session.create',{'profile':'hermes-bot-creator','source':'gui','title':'Bot Creator - prueba E2E temporal','follow_profile_config':True,'close_on_disconnect':True})
         sid=session['session_id']
         print('PASS native Desktop session.create',sid,flush=True)
         async def turn(text):

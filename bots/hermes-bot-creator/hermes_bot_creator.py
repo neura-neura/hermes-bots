@@ -373,7 +373,7 @@ class BotService:
     def rename(self, target, revision, new_name):
         with self.lock():
             before=self.adapter.snapshot(target); self.check(before,revision)
-            if before['id'] in ('default','bot-creator'): raise BotError('Use display rename for protected profiles')
+            if before['id'] in ('default','hermes-bot-creator'): raise BotError('Use display rename for protected profiles')
             pending=self.record('rename',before,status='prepared')
             result=self.adapter.rename(before['id'],new_name)
             target_id='default' if before['id']=='default' else result['name']
@@ -419,7 +419,7 @@ class BotService:
 
     def prepare_delete(self,target):
         before=self.adapter.snapshot(target)
-        if before['id'] in ('default','bot-creator'): raise BotError('Protected installation/Bot Creator profile')
+        if before['id'] in ('default','hermes-bot-creator'): raise BotError('Protected installation/Bot Creator profile')
         token=secrets.token_urlsafe(24)
         private_write(self.state/('confirmation-'+digest(token)+'.ticket'),json.dumps({'id':before['id'],'revision':before['revision'],'expires':datetime.datetime.now(datetime.timezone.utc).timestamp()+600}))
         return {'confirmation_token':token,'bot_id':before['id'],'revision':before['revision'],'question':f'¿Confirmas eliminar {before["name"]} ({before["id"]})? Espera la confirmación explícita del usuario antes de llamar delete_bot.'}

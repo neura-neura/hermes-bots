@@ -3,10 +3,10 @@ import json,sys
 from pathlib import Path
 from hermes_bot_creator import BotService, BotError, SOURCE
 repo=Path(__file__).resolve().parent
-s=BotService(); ident='bot-creator'
+s=BotService(); ident='hermes-bot-creator'
 prompt=(repo/'BOT_CREATOR_SOUL.md').read_text()
 if not any(r['name']==ident for r in s.list()):
-    s.create({'name':ident,'display_name':'Hermes Bot Creator','description':'Crea, inspecciona y modifica bots nativos de Hermes; herramientas, modelos, historial y rollback.','prompt':prompt,'tools_only':[]})
+    s.create({'name':ident,'display_name':'hermes-bot-creator','description':'Crea, inspecciona y modifica bots nativos de Hermes; herramientas, modelos, historial y rollback.','prompt':prompt,'tools_only':[]})
 else:
     old=s.get(ident)
     if old['prompt']!=prompt: s.patch(ident,old['revision'],{'prompt':prompt})

@@ -26,17 +26,17 @@ Prerequisites:
 From the repository root:
 
 ```bash
-cd bots/bot-creator
+cd bots/hermes-bot-creator
 python3.12 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python install.py
 ```
 
-Open **Hermes → BOTS → Hermes Bot Creator**. Its canonical profile ID is `bot-creator`. Hermes launches the profile's administrative MCP automatically; no separate daemon or port is created.
+Open **Hermes → BOTS → hermes-bot-creator**. Its canonical profile ID is `hermes-bot-creator`. Hermes launches the profile's administrative MCP automatically; no separate daemon or port is created.
 
 The installer creates a native profile by cloning default configuration and skills through Hermes' channel-safe cloning mechanism. It installs its SOUL instructions and a profile-scoped MCP server. Its MCP selection replaces inherited servers for this administrative profile, and its CLI toolsets are limited to clarification and Bot Creator. No other profile is edited.
 
-Keep this directory and its virtual environment in place: the installed MCP configuration references their absolute paths. Re-running the installer refreshes this profile; it does not modify Hermes core. Back up an existing `bot-creator` profile before re-running if you have customized it.
+Keep this directory and its virtual environment in place: the installed MCP configuration references their absolute paths. Re-running the installer refreshes this profile; it does not modify Hermes core. Back up an existing `hermes-bot-creator` profile before re-running if you have customized it.
 
 This integration was tested on macOS against a local Hermes installation. Other layouts, remote deployments, authentication configurations, and future API changes are not guaranteed to work without adaptation.
 
@@ -116,7 +116,7 @@ This MCP does not expose arbitrary secret editing, new MCP commands, privileged 
 
 A bot **is** a profile; there is no independent profile property that can be swapped while keeping a separate bot identity. Copy selected settings or create a derivative instead.
 
-Visible-name changes preserve the canonical ID. Native canonical renaming necessarily changes that ID. `default` and `bot-creator` are protected from deletion and canonical renaming. Renaming to an ID with a native deletion tombstone is rejected before mutation because a discovered native behavior can hide that destination; use a fresh ID or a visible-name change.
+Visible-name changes preserve the canonical ID. Native canonical renaming necessarily changes that ID. `default` and `hermes-bot-creator` are protected from deletion and canonical renaming. Renaming to an ID with a native deletion tombstone is rejected before mutation because a discovered native behavior can hide that destination; use a fresh ID or a visible-name change.
 
 The `web` toolset groups `web_search` and `web_extract`; Browser is the separate `browser` toolset. This integration does not promise search-only isolation within that bundle. Hermes may add interface/system tools depending on the chat surface; tool selection is not a security sandbox.
 

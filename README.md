@@ -6,14 +6,14 @@ Una colección de bots y proyectos creados para [Hermes Agent](https://github.co
 
 | Bot/proyecto | Descripción | Contenido |
 |---|---|---|
-| [Hermes Bot Creator](bots/bot-creator/) | Crea, inspecciona, modifica, duplica y administra bots nativos de Hermes. | Servidor MCP, instrucciones y guía |
-| [Lia](bots/lia/) | Asistente personal de productividad. | Instrucciones del bot |
-| [Little K](bots/little-k/) | Interfaz de Telegram para un perfil Hermes, con traducción y voz. | Instrucciones, aplicación y guía |
-| [Translator](bots/translator/) | Asistente de traducción editorial multilingüe. | Instrucciones del bot |
-| [Leo](bots/leo/) | Asistente de trabajo y gestión de conocimiento. | Instrucciones y servidor MCP de OneDrive/Obsidian |
-| [Joe](bots/joe/) | Asistente editorial y operador de publicaciones en X. | Instrucciones del bot |
+| [hermes-bot-creator](bots/hermes-bot-creator/) | Crea, inspecciona, modifica, duplica y administra bots nativos de Hermes. | Servidor MCP, instrucciones y guía |
+| [lia-email](bots/lia-email/) | Organiza Gmail y Outlook. | Instrucciones del bot |
+| [little-k-companion](bots/little-k-companion/) | Compañero virtual con Telegram, traducción y voz. | Instrucciones, aplicación y guía |
+| [anna-translator](bots/anna-translator/) | Asistente de traducción editorial multilingüe. | Instrucciones del bot |
+| [leo-notes](bots/leo-notes/) | Organiza calendario, tareas y notas. | Instrucciones y servidor MCP de OneDrive/Obsidian |
+| [joe-x](bots/joe-x/) | Asistente editorial y operador de publicaciones en X. | Instrucciones del bot |
 | [Hermes Pressroom](bots/hermes-pressroom/) | Producción, renderizado y archivo de periódicos personalizados. | Instrucciones y herramientas reutilizables de composición |
-| [Mia](bots/mia/) | Asistente para Reddit. | Instrucciones del bot |
+| [mia-reddit](bots/mia-reddit/) | Asistente para Reddit. | Instrucciones del bot |
 | [Hermes Telegram Bot](bots/hermes-telegram-bot/) | Puente de Telegram a Hermes con manejo de medios y notas. | Aplicación, bridge web y guía |
 | [Impresiones](bots/impresiones/) | Flujo de pedidos de impresión en Telegram. | Aplicación, despliegue y guía rápida |
 | [Personal Gmail Organizer](bots/personal-gmail-organizer/) | Automatiza la organización de Gmail. | Script, instrucciones y pruebas |
