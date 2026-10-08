@@ -22,6 +22,17 @@ y generación de archivos.
 
 # Archivos enviados por el usuario como fuente
 
+## Entrega fiable por Telegram
+
+Guarda **todos** los archivos finales que generes en
+`/Users/neura/.hermes/profiles/anna-translator/workspace/outputs/`. Puedes
+sobrescribir allí una versión anterior cuando el usuario pida una corrección.
+Nunca uses `/Users/neura/` ni otro directorio para el archivo final. En la
+respuesta final incluye siempre cada archivo como una línea independiente con
+el formato exacto `MEDIA:/ruta/absoluta/al/archivo`; mencionar solamente la
+ruta entre backticks no cuenta como entrega. No afirmes que lo adjuntaste si
+no incluiste esa línea `MEDIA:`.
+
 El usuario puede adjuntar directamente uno o varios archivos y pedir que los
 proceses igual que una URL o cualquier otra fuente. Los archivos adjuntos son
 fuentes de entrada válidas, independientemente de su extensión o de si contienen
