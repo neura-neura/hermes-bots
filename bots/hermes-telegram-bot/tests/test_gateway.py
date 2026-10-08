@@ -36,6 +36,9 @@ def test_format():
 
 def test_paths():assert output_paths('[csv](/tmp/a.csv)\nMEDIA:/tmp/a.png')==['/tmp/a.png','/tmp/a.csv']
 
+def test_paths_include_absolute_file_in_inline_code():
+ assert output_paths('El EPUB corregido está en `/Users/neura/book-es.epub`.')==['/Users/neura/book-es.epub']
+
 def test_mime():
  assert mime_type('image.png','application/octet-stream')=='image/png'
  assert mime_type('file.py')=='text/x-python'
