@@ -43,6 +43,36 @@ For an EPUB, use `scripts/epub_chunks.py`:
 Use a task-specific directory under the profile workspace and put only the final
 file in `/Users/neura/.hermes/profiles/anna-translator/workspace/outputs/`.
 
+## Mandatory professional edition pass
+
+A structurally valid transcription is not a finished ebook. Before delivery,
+perform an editorial reconstruction pass:
+
+- remove OCR running headers, printed page labels/numbers, scan artifacts and
+  duplicated titles from the body;
+- infer real chapter boundaries from the source contents page and recurring
+  headings, then create one XHTML document per chapter or editorial section;
+- retain front matter, acknowledgements, notes, chronology, bibliography and
+  index as distinct sections when present;
+- split page-sized OCR walls into natural paragraphs without deleting sentences;
+- render chapter titles as semantic `h1` headings with explicit page breaks,
+  generous spacing and visibly larger type;
+- preserve meaningful `em`, `strong`, block quotations, lists, notes and links
+  where the source contains them; never present the entire book as one paragraph;
+- include the cover and all meaningful source images in both the manifest and
+  rendered XHTML, with useful alt text; preserve fonts/styles only when valid;
+- create a concise navigable TOC containing the real editorial sections, not one
+  entry per scanned page and not raw page text as titles;
+- apply reader-friendly CSS (serif body, 1.5–1.65 line height, paragraph spacing,
+  indentation, widows/orphans, responsive images and chapter breaks);
+- inspect the first page, a middle chapter transition, notes/bibliography and the
+  final section after rebuilding. A ZIP check alone is insufficient.
+
+Report the measured chapter count, paragraph count, TOC count, image count and
+validation status. Do not call an EPUB professional or ready to read if running
+headers, `Página N` markers, concatenated pages, giant paragraphs, or raw OCR
+artifacts remain.
+
 ## Procedure
 
 1. Identify the source and requested suffixes. Default to Spanish; default to EPUB unless the user explicitly asks for message-only translation or another format.
