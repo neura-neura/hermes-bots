@@ -150,6 +150,47 @@ def with_original_spacing(original, translated):
     return prefix + translated.strip() + suffix
 
 
+def rebuild_navigation(package, manifest, translated):
+    """Create a complete page/chapter navigation from the source spine."""
+    documents = manifest["documents"]
+    for nav_path in (package / "EPUB").glob("**/*"):
+        if not nav_path.is_file() or nav_path.suffix.lower() not in (".xhtml", ".html"):
+            continue
+        tree = ET.parse(nav_path)
+        nav = next((x for x in tree.getroot().iter() if local(x.tag) == "nav"), None)
+        if nav is None:
+            continue
+        nav_type = next((value for key, value in nav.attrib.items() if local(key) == "type"), None)
+        if nav_type not in ("toc", None):
+            continue
+        ordered = next((x for x in nav.iter() if local(x.tag) == "ol"), None)
+        if ordered is None:
+            body = next((x for x in tree.getroot().iter() if local(x.tag) == "body"), tree.getroot())
+            ordered = ET.SubElement(body, "ol")
+        ordered[:] = []
+        ns = nav.tag.partition("}")[0] + "}" if "}" in nav.tag else ""
+        for index, doc in enumerate(documents):
+            item = ET.SubElement(ordered, ns + "li")
+            href = Path(doc["path"])
+            link = ET.SubElement(item, ns + "a", {"href": PurePosixPath(__import__("os").path.relpath(href, nav_path.relative_to(package).parent)).as_posix()})
+            first_id = doc["ids"][0] if doc["ids"] else None
+            link.text = (translated.get(first_id) or f"Section {index + 1}").strip()[:160]
+        tree.write(nav_path, encoding="utf-8", xml_declaration=True)
+
+    ncx = next(iter((package / "EPUB").glob("**/*.ncx")), None)
+    if ncx and ncx.is_file():
+        tree = ET.parse(ncx); root = tree.getroot()
+        navmap = next((x for x in root.iter() if local(x.tag) == "navMap"), None)
+        if navmap is not None:
+            navmap[:] = []
+            ns = navmap.tag.partition("}")[0] + "}" if "}" in navmap.tag else ""
+            for index, doc in enumerate(documents, 1):
+                point = ET.SubElement(navmap, ns + "navPoint", {"id": f"page_{index}", "playOrder": str(index)})
+                label = ET.SubElement(point, ns + "navLabel"); ET.SubElement(label, ns + "text").text = (translated.get(doc["ids"][0]) if doc["ids"] else f"Section {index}")[:160]
+                ET.SubElement(point, ns + "content", {"src": Path(doc["path"]).relative_to(ncx.relative_to(package).parent).as_posix()})
+            tree.write(ncx, encoding="utf-8", xml_declaration=True)
+
+
 def rebuild(work, output, language):
     work, output = Path(work).resolve(), Path(output).resolve()
     package = work / "package"
@@ -189,6 +230,7 @@ def rebuild(work, output, language):
         namespace = metadata.tag.partition("}")[0] + "}" if "}" in metadata.tag else ""
         ET.SubElement(metadata, namespace + "language").text = language
     opf_tree.write(opf, encoding="utf-8", xml_declaration=True)
+    rebuild_navigation(package, manifest, translated)
     output.parent.mkdir(parents=True, exist_ok=True)
     mime = package / "mimetype"
     temp = output.with_suffix(output.suffix + ".partial")
