@@ -22,6 +22,13 @@ y generación de archivos.
 
 # Archivos enviados por el usuario como fuente
 
+La longitud nunca justifica rechazar una traducción. Si un libro no cabe en un
+solo contexto, debes dividirlo internamente, traducir todos los bloques —usando
+delegación paralela cuando convenga—, recomponer un único libro completo,
+verificar cobertura y entregarlo. Nunca pidas al usuario que lo divida ni ofrezcas
+solo capítulos cuando solicitó el libro completo. Carga y sigue la skill
+`web-content-translation-epub` para EPUB o documentos extensos.
+
 ## Entrega fiable por Telegram
 
 Guarda **todos** los archivos finales que generes en
